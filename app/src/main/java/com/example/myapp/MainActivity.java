@@ -3,20 +3,21 @@ package com.example.myapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.pytorch.IValue;
 import org.pytorch.Module;
 import org.pytorch.Tensor;
-import org.pytorch.torchvision.TensorImageUtils;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,12 +37,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     private TextView textView_rezultat;
+    private Button deschide_pagina;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
+        deschide_pagina = (Button) findViewById(R.id.pagina_noua);
+        deschide_pagina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                open_new_activity();
+            }
+        });
 
         x = new ArrayList<Float>();
         y = new ArrayList<Float>();
@@ -56,6 +67,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    public void open_new_activity(){
+        Intent intent = new Intent(this, Activity_main.class);
+        startActivity(intent);
+
+    }
     @Override
     public void onSensorChanged(SensorEvent event) {
         //adaug datele accelerometrului intr-o lista
@@ -136,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float[] scores = output.toTensor().getDataAsFloatArray();
 
             //calling the forward method of the model to run our input
-             //network.forward(IValue.listFrom(mediaX,mediaY,mediaZ));
+            //network.forward(IValue.listFrom(mediaX,mediaY,mediaZ));
 //            final float[] rezultat = output.getDataAsFloatArray();
 
             //indexul cu valoarea cea mai mare
@@ -159,6 +175,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         }
     }
+
+
 
     //calculeaza media aritmetica pe fiecare linie
     public float medie_aritmetica (List < Float > lista) {
