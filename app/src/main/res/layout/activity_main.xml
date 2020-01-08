@@ -8,25 +8,29 @@
 
     <TextView
         android:id="@+id/textView_rezultat"
-        android:layout_width="142dp"
-        android:layout_height="48dp"
-        android:text="Hello World!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="234dp"
+        android:layout_height="149dp"
+        android:text="Meniu. Alegeti o activitate"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
 
     <Button
         android:id="@+id/pagina_noua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deschide pagina noua"
+        android:text="Activitate prezisa"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
+        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.265" />
+        app:layout_constraintVertical_bias="0.355" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
